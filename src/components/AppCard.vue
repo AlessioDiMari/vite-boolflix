@@ -8,8 +8,20 @@ export default{
 
     methods: {
         getLanguageFlagUrl(languageCode) {
-            // Costruisci l'URL della bandiera usando il codice della lingua
-            return `https://flagcdn.com/w40/${languageCode.toLowerCase()}.png`;
+            switch (languageCode) {
+                case 'en':
+                    return 'https://flagcdn.com/w40/gb.png';
+                case 'es':
+                    return 'https://flagcdn.com/w40/es.png';
+                case 'fr':
+                    return 'https://flagcdn.com/w40/fr.png';
+                case 'de':
+                    return 'https://flagcdn.com/w40/de.png';
+                case 'it':
+                    return 'https://flagcdn.com/w40/it.png';
+                default:
+                    return 'https://flagcdn.com/w40/generic.png';
+            }
         }
     }
 }

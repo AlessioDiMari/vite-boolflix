@@ -53,11 +53,11 @@ export default{
             padding: 8px 12px;
             border-radius: 0.25em;
             border: none;
-            cursor: pointer;
         }
-
+        
         button{
             background-color: #242424;
+            cursor: pointer;
         }
     }
 }
