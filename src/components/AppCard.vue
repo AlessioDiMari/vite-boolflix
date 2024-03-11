@@ -8,7 +8,7 @@ export default{
 
 <template>
     <div>
-        sooooca
+        
     </div>
 </template>
 
