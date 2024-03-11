@@ -1,6 +1,14 @@
 <script>
+import { store } from '../store';
+
 export default{
     name: 'AppHeader',
+
+    data(){
+        return{
+            store
+        }
+    }
 }
 </script>
 
@@ -12,8 +20,8 @@ export default{
             boolflix
         </h1>
         <div class="search">
-            <input type="search">
-            <button>
+            <input type="search" v-model="store.searchText">
+            <button @click="$emit('search')">
                 Cerca
             </button>
         </div>

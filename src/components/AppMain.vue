@@ -18,13 +18,28 @@ export default{
 
 
 <template>
-    <div>
-        <AppCard></AppCard>
+    <div class="container-main">
+        <section class="film">
+            <h3>Film</h3>
+            <AppCard></AppCard>
+        </section>
+
+        <section class="series">
+            <h3>Series</h3>
+            <AppCard></AppCard>
+        </section>
     </div>
 </template>
 
 
 
-<style>
+<style lang="scss">
+
+.container-main{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 28px;
+}
 
 </style>

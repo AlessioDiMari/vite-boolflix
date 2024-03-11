@@ -7,8 +7,19 @@ export default{
 
 
 <template>
-    <div>
-        
+    <div class="card">
+        <strong class="title">
+
+        </strong>
+        <div class="og-title">
+
+        </div>
+        <div class="lang">
+
+        </div>
+        <div class="rating">
+            
+        </div>
     </div>
 </template>
 
