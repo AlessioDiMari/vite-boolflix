@@ -11,6 +11,16 @@ export default{
     }
   },
 
+  created(){
+
+    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=70b1b8819a29487e3d43e24ef439ddeb')
+    .then(res => {
+      console.log(res.data.results)
+      this.store.movies = res.data.results
+    })
+
+  },
+
   components : {
     AppHeader,
     AppMain,

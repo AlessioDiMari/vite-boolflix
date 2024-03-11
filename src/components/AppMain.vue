@@ -1,12 +1,13 @@
 <script>
 import AppCard from './AppCard.vue'
+import { store } from '../store';
 
 export default{
     name: 'AppMain',
 
     data(){
         return{
-
+            store,
         }
     },
     components:{
@@ -21,13 +22,19 @@ export default{
     <div class="container-main">
         <section class="film">
             <h3>Film</h3>
-            <AppCard></AppCard>
+            <ul>
+                <AppCard v-for="actualMovie in store.movies"
+                :movie="actualMovie"
+                >
+                
+                </AppCard>
+            </ul>
         </section>
 
-        <section class="series">
+        <!-- <section class="series">
             <h3>Series</h3>
             <AppCard></AppCard>
-        </section>
+        </section> -->
     </div>
 </template>
 
@@ -40,6 +47,13 @@ export default{
     flex-direction: column;
     gap: 36px;
     padding: 28px;
+
+    ul{
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
 }
 
 </style>
