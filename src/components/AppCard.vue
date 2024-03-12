@@ -34,22 +34,28 @@ export default{
 <!-- {{ movie.vote_average }} -->
 
 <template>
-    <li class="card">
-        <img :src="'http://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
-        <strong class="title">
-            {{ movie.title ? movie.title : movie.name }}
-        </strong>
-        <div class="og-title">
-            {{ movie.original_title ? movie.original_title : movie.original_name }}
-        </div>
-        <div class="lang">
-            Lingua: 
-            <img :src="getLanguageFlagUrl(movie.original_language)" :alt="movie.original_language">
-        </div>
-        <div class="rating">
-            Voto: 
-            <div class="star">
-                <i v-for="n in 5" class="fa-solid fa-star" :class="{ 'yellow-star': n <= starRating() }"></i>
+    <li>
+        <div class="card">
+            <div class="card-front" :style="{ backgroundImage: 'url(http://image.tmdb.org/t/p/w342/' + movie.poster_path + ')' }">
+            </div>
+            <div class="card-back">
+                <strong class="title">
+                    {{ movie.title ? movie.title : movie.name }}
+                </strong>
+                <div class="og-title">
+                    {{ movie.original_title ? movie.original_title : movie.original_name }}
+                </div>
+                <div class="overview">
+                    Trama:
+                    <div class="overview">{{ movie.overview }}</div> 
+                    <!-- <img :src="getLanguageFlagUrl(movie.original_language)" :alt="movie.original_language"> -->
+                </div>
+                <div class="rating">
+                    Voto: 
+                    <div class="star">
+                        <i v-for="n in 5" class="fa-solid fa-star" :class="{ 'yellow-star': n <= starRating() }"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </li>
@@ -59,29 +65,69 @@ export default{
 
 <style lang="scss">
 
-.card{
+li{
     width: calc(100% / 5 - 24px / 5 * 4);
 
-    > img{
-        width: 100%;
-        aspect-ratio: 2 / 3;
-        object-fit: cover;
-    }
+}
 
-    .lang{
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+li:hover > .card{
+    transform: rotateY(180deg);
+}
 
+.card{
+    position: relative;
+    aspect-ratio: 2 / 3;
+    transition: transform 1000ms;
+    transform-style: preserve-3d;
+}
+
+
+
+.card-front{
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-size: cover;
+    background-position: center;
+    backface-visibility: hidden;
+}
+
+.card-back{
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: black;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    overflow-y: auto;
+
+    strong{
+        font-size: 1.1em;
+    }
+    .og-title{
+        font-size: 0.9em;
+    }
+}
+
+.overview{
+    display: flex;
+    gap: 6px;
+}
+
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 6px;
     .star{
         display: flex;
         flex-direction: row;
-
+    
         .yellow-star{
             color: yellow;
         }
     }
 }
+
 
 </style>
