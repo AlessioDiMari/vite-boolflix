@@ -22,16 +22,20 @@ export default{
                 default:
                     return 'https://flagcdn.com/w40/generic.png';
             }
+        },
+
+        starRating(){
+            return Math.ceil(this.movie.vote_average / 2);
         }
     }
 }
 </script>
 
-
+<!-- {{ movie.vote_average }} -->
 
 <template>
     <li class="card">
-        <img :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
+        <img :src="'http://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
         <strong class="title">
             {{ movie.title ? movie.title : movie.name }}
         </strong>
@@ -43,7 +47,10 @@ export default{
             <img :src="getLanguageFlagUrl(movie.original_language)" :alt="movie.original_language">
         </div>
         <div class="rating">
-            Voto: {{ movie.vote_average }}
+            Voto: 
+            <div  class="star">
+                <i v-for="n in starRating()" class="fa-solid fa-star"></i>
+            </div>
         </div>
     </li>
 </template>
@@ -65,6 +72,11 @@ export default{
         display: flex;
         align-items: center;
         gap: 8px;
+    }
+
+    .star{
+        display: flex;
+        flex-direction: row;
     }
 }
 
