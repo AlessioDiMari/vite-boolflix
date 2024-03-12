@@ -48,8 +48,8 @@ export default{
         </div>
         <div class="rating">
             Voto: 
-            <div  class="star">
-                <i v-for="n in starRating()" class="fa-solid fa-star"></i>
+            <div class="star">
+                <i v-for="n in 5" class="fa-solid fa-star" :class="{ 'yellow-star': n <= starRating() }"></i>
             </div>
         </div>
     </li>
@@ -77,6 +77,10 @@ export default{
     .star{
         display: flex;
         flex-direction: row;
+
+        .yellow-star{
+            color: yellow;
+        }
     }
 }
 
