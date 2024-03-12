@@ -21,20 +21,24 @@ export default{
 <template>
     <div class="container-main">
         <section class="film">
-            <h3>Film</h3>
+            <h2>Film</h2>
             <ul>
                 <AppCard v-for="actualMovie in store.movies"
                 :movie="actualMovie"
                 >
-                
                 </AppCard>
             </ul>
         </section>
 
-        <!-- <section class="series">
-            <h3>Series</h3>
-            <AppCard></AppCard>
-        </section> -->
+        <section class="series">
+            <h2>Series</h2>
+            <ul>
+                <AppCard v-for="actualSerie in store.series"
+                :movie="actualSerie"
+                >
+                </AppCard>
+            </ul>
+        </section>
     </div>
 </template>
 

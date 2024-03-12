@@ -31,11 +31,12 @@ export default{
 
 <template>
     <li class="card">
+        <img :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
         <strong class="title">
-            {{ movie.title }}
+            {{ movie.title ? movie.title : movie.name }}
         </strong>
         <div class="og-title">
-            {{ movie.original_title }}
+            {{ movie.original_title ? movie.original_title : movie.original_name }}
         </div>
         <div class="lang">
             Lingua: 
@@ -53,6 +54,12 @@ export default{
 
 .card{
     width: calc(100% / 5 - 24px / 5 * 4);
+
+    > img{
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: cover;
+    }
 
     .lang{
         display: flex;

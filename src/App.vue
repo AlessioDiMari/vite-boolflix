@@ -13,10 +13,16 @@ export default{
 
   created(){
 
-    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=70b1b8819a29487e3d43e24ef439ddeb')
+    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=70b1b8819a29487e3d43e24ef439ddeb&language=it-IT')
     .then(res => {
       console.log(res.data.results)
       this.store.movies = res.data.results
+    });
+
+    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=70b1b8819a29487e3d43e24ef439ddeb&language=it-IT')
+    .then(res => {
+      console.log(res.data.results)
+      this.store.series = res.data.results
     })
 
   },
@@ -34,6 +40,11 @@ export default{
       .then(res => {
         console.log(res.data.results)
         this.store.movies = res.data.results
+      });
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=70b1b8819a29487e3d43e24ef439ddeb&language=it-IT&query=' + this.store.searchText)
+      .then(res => {
+        console.log(res.data.results)
+        this.store.series = res.data.results
       });
     }
   }
